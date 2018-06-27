@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--suppress AndroidLintContentDescription -->
-        <com.example.xyzreader.ui.DynamicHeightNetworkImageView
+        <com.oshelyakin.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             style="@style/Theme.Bacon.Article.ListItem"
             android:transitionName="@string/photo_shared_transition"/>

@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package com.oshelyakin.xyzreader.ui;
 
 import android.app.ActivityOptions;
 import android.app.LoaderManager;
@@ -15,14 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.format.DateUtils;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
-import com.example.xyzreader.data.UpdaterService;
+import com.oshelyakin.xyzreader.R;
+import com.oshelyakin.xyzreader.data.ArticleLoader;
+import com.oshelyakin.xyzreader.data.ItemsContract;
+import com.oshelyakin.xyzreader.data.UpdaterService;
 
 /**
  * An activity representing a list of Articles. This activity has different presentations for
@@ -132,12 +133,10 @@ public class ArticleListActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
                     if (Build.VERSION.SDK_INT >= 21) {
-                        //https://github.com/udacity/ud862-samples/tree/master/Unsplash
                         Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this).toBundle();
                         startActivity(new Intent(Intent.ACTION_VIEW,
                                 ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
-                    }
-                    else{
+                    } else {
                         startActivity(new Intent(Intent.ACTION_VIEW,
                                 ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
                     }

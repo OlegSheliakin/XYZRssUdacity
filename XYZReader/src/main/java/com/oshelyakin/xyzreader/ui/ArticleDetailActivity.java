@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package com.oshelyakin.xyzreader.ui;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -14,9 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
+import com.oshelyakin.xyzreader.R;
+import com.oshelyakin.xyzreader.data.ArticleLoader;
+import com.oshelyakin.xyzreader.data.ItemsContract;
 
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
@@ -89,7 +89,6 @@ public class ArticleDetailActivity extends AppCompatActivity
         // Select the start ID
         if (mStartId > 0) {
             mCursor.moveToFirst();
-            // TODO: optimize
             while (!mCursor.isAfterLast()) {
                 if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
                     final int position = mCursor.getPosition();
