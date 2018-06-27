@@ -92,13 +92,11 @@ public class ArticleDetailFragment extends Fragment implements
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
-        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+        mPhotoView = mRootView.findViewById(R.id.photo);
 
-        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar);
+        Toolbar toolbar = mRootView.findViewById(R.id.toolbar);
+        collapsingToolbarLayout = mRootView.findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-
-        //https://developer.android.com/training/implementing-navigation/ancestral.html
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -109,7 +107,6 @@ public class ArticleDetailFragment extends Fragment implements
                 getActivity().finishAfterTransition();
             }
         });
-
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +118,6 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
-        //updateStatusBar();
         return mRootView;
     }
 
@@ -145,10 +141,10 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
-        TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
+        TextView titleView = mRootView.findViewById(R.id.article_title);
+        TextView bylineView = mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        TextView bodyView = mRootView.findViewById(R.id.article_body);
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Charter-Regular.ttf"));
 
         if (mCursor != null) {
@@ -177,7 +173,6 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
-                                //updateStatusBar();
                             }
                         }
 
